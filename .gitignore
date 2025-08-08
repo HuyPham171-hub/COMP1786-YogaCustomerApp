@@ -1,0 +1,70 @@
+## Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+## User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.csproj.user
+
+## Mono Auto Generated Files
+mono_crash.*
+
+## Visual Studio / VS for Mac
+.vs/
+.idea/
+.vscode/
+*.swp
+
+## Rider
+*.sln.iml
+
+## NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## MAUI specific
+Platforms/Android/obj/
+Platforms/Android/bin/
+Platforms/iOS/obj/
+Platforms/iOS/bin/
+Platforms/MacCatalyst/obj/
+Platforms/MacCatalyst/bin/
+Platforms/Windows/obj/
+Platforms/Windows/bin/
+
+## Device-specific files
+*.apk
+*.aab
+*.ipa
+*.app
+*.dSYM/
+
+## Others
+*.log
+*.db
+*.db-journal
+*.zip
+*.rar
+*.tar.gz
+
+# Optional: include only if you generate certificates or keys
+*.p12
+*.cer
+*.key
+
+# Don't ignore gitkeep if you use it to keep empty folders
+!.gitkeep
