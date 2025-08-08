@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="YogaCustomerApp.Pages.MainPage"
+    Title="Universal Yoga">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="25">
+            
+            <!-- Header -->
+            <StackLayout Spacing="10">
+                <Label 
+                    Text="Universal Yoga"
+                    FontSize="32"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center" 
+                    HorizontalTextAlignment="Center"
+                    TextColor="#4CAF50"/>
+                
+                <Label 
+                    Text="Book your yoga classes with ease"
+                    FontSize="16"
+                    HorizontalOptions="Center" 
+                    HorizontalTextAlignment="Center"
+                    TextColor="#666"/>
+            </StackLayout>
+
+            <!-- Navigation Buttons -->
+            <StackLayout Spacing="15">
+                <Button 
+                    Text="View Available Classes"
+                    Clicked="OnViewClassesClicked"
+                    FontSize="18"
+                    BackgroundColor="#2196F3"
+                    TextColor="White"
+                    CornerRadius="25"
+                    Padding="20,15"/>
+                
+                <Button 
+                    Text="View Cart"
+                    Clicked="OnViewCartClicked"
+                    FontSize="18"
+                    BackgroundColor="#FF9800"
+                    TextColor="White"
+                    CornerRadius="25"
+                    Padding="20,15"/>
+                
+                <Button 
+                    Text="Booking History"
+                    Clicked="OnViewHistoryClicked"
+                    FontSize="18"
+                    BackgroundColor="#9C27B0"
+                    TextColor="White"
+                    CornerRadius="25"
+                    Padding="20,15"/>
+            </StackLayout>
+
+            <!-- Status -->
+            <Label 
+                x:Name="statusLabel"
+                Text="Welcome to Universal Yoga!"
+                FontSize="14"
+                HorizontalOptions="Center" 
+                HorizontalTextAlignment="Center"
+                TextColor="#999"
+                Margin="0,20,0,0"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

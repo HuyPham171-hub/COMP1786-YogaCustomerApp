@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YogaCustomerApp.Pages.ClassDetailPage"
+             Title="Class Details">
+    
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+            <Label Text="Class Details" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
+            
+            <Frame BorderColor="#E0E0E0" Padding="20" CornerRadius="10">
+                <StackLayout Spacing="10">
+                    <Label Text="Date" FontAttributes="Bold" FontSize="16"/>
+                    <Label x:Name="dateLabel" FontSize="14" TextColor="#666"/>
+                    
+                    <Label Text="Teacher" FontAttributes="Bold" FontSize="16"/>
+                    <Label x:Name="teacherLabel" FontSize="14" TextColor="#666"/>
+                    
+                    <Label Text="Comments" FontAttributes="Bold" FontSize="16" x:Name="commentTitleLabel" IsVisible="False"/>
+                    <Label x:Name="commentLabel" FontSize="14" TextColor="#666" IsVisible="False"/>
+                </StackLayout>
+            </Frame>
+            
+            <Button Text="Add to Cart" 
+                    Clicked="OnAddToCartClicked"
+                    BackgroundColor="#4CAF50" 
+                    TextColor="White"
+                    FontSize="16"
+                    CornerRadius="25"
+                    Padding="20,10"/>
+            
+            <Button Text="Back to Classes" 
+                    Clicked="OnBackClicked"
+                    BackgroundColor="#2196F3" 
+                    TextColor="White"
+                    FontSize="16"
+                    CornerRadius="25"
+                    Padding="20,10"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

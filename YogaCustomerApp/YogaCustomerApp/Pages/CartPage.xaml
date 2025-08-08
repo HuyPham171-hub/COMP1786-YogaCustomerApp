@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:YogaCustomerApp.Pages"
+             xmlns:converters="clr-namespace:YogaCustomerApp.Converters"
+             x:Class="YogaCustomerApp.Pages.CartPage"
+             Title="Your Cart">
+    
+    <Grid RowDefinitions="*,Auto,Auto" Padding="15">
+        <!-- Cart Items -->
+        <StackLayout Grid.Row="0" Spacing="10">
+            <Label Text="Shopping Cart" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+            
+            <CollectionView x:Name="cartView" ItemsSource="{Binding CartItems}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="#E0E0E0" Margin="5" Padding="15" CornerRadius="8" BackgroundColor="#FFF3E0">
+                            <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,Auto" RowSpacing="8">
+                                <StackLayout Grid.Column="0" Grid.RowSpan="4" Spacing="8">
+                                    <!-- Date and Time -->
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
+                                        <Label Text="{Binding DateDisplay, StringFormat='📅 {0}'}" FontAttributes="Bold" FontSize="16" TextColor="#FF9800"/>
+                                        <Label Text="{Binding TimeDisplay, StringFormat='🕐 {0}'}" FontSize="14" TextColor="#666" IsVisible="{Binding TimeDisplay, Converter={x:Static converters:StringToBoolConverter.Instance}}"/>
+                                    </StackLayout>
+                                    
+                                    <!-- Teacher -->
+                                    <StackLayout Orientation="Horizontal" Spacing="5">
+                                        <Label Text="👤" FontSize="14"/>
+                                        <Label Text="{Binding Teacher, StringFormat='{0}'}" FontSize="14" TextColor="#666" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    
+                                    <!-- Course ID -->
+                                    <StackLayout Orientation="Horizontal" Spacing="5">
+                                        <Label Text="📚" FontSize="12"/>
+                                        <Label Text="{Binding CourseId, StringFormat='Course ID: {0}'}" FontSize="12" TextColor="#888"/>
+                                    </StackLayout>
+                                    
+                                    <!-- Comment -->
+                                    <StackLayout Orientation="Horizontal" Spacing="5" IsVisible="{Binding Comment, Converter={x:Static converters:StringToBoolConverter.Instance}}">
+                                        <Label Text="💬" FontSize="12"/>
+                                        <Label Text="{Binding Comment, StringFormat='{0}'}" FontSize="12" TextColor="#999" LineBreakMode="WordWrap"/>
+                                    </StackLayout>
+                                </StackLayout>
+                                
+                                <Button Grid.Column="1" Grid.Row="0" Grid.RowSpan="4"
+                                        Text="❌" 
+                                        Clicked="OnRemoveFromCartClicked"
+                                        BackgroundColor="#F44336" 
+                                        TextColor="White"
+                                        CornerRadius="20"
+                                        Padding="12,8"
+                                        FontSize="16"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="Center"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            <Label x:Name="emptyCartLabel" Text="Your cart is empty" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center"
+                   FontSize="16"
+                   TextColor="#999"
+                   IsVisible="False"/>
+        </StackLayout>
+
+        <!-- Email Entry -->
+        <StackLayout Grid.Row="1" Spacing="10" Padding="0,10">
+            <Label Text="Enter your email to complete booking:" FontSize="16"/>
+            <Entry x:Name="emailEntry" Placeholder="your.email@example.com" Keyboard="Email" TextChanged="OnEmailTextChanged"/>
+            <Label x:Name="emailValidationLabel" Text="" FontSize="12" TextColor="Red" IsVisible="False"/>
+        </StackLayout>
+
+        <!-- Action Buttons -->
+        <StackLayout Grid.Row="2" Spacing="10">
+            <Button Text="Submit Booking" 
+                    Clicked="OnSubmitBooking"
+                    BackgroundColor="#4CAF50" 
+                    TextColor="White"
+                    IsEnabled="False"
+                    x:Name="submitButton"/>
+            
+            <Button Text="Clear Cart" 
+                    Clicked="OnClearCartClicked"
+                    BackgroundColor="#FF9800" 
+                    TextColor="White"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

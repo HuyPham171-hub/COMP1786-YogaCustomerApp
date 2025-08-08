@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YogaCustomerApp.Pages.CartPage"
+             Title="Your Cart">
+    
+    <Grid RowDefinitions="*,Auto,Auto" Padding="15">
+        <!-- Cart Items -->
+        <StackLayout Grid.Row="0" Spacing="10">
+            <Label Text="Shopping Cart" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+            
+            <CollectionView x:Name="cartView" ItemsSource="{Binding CartItems}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="#E0E0E0" Margin="5" Padding="15" CornerRadius="8">
+                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                                <StackLayout Grid.Column="0" Grid.RowSpan="2">
+                                    <Label Text="{Binding Date}" FontAttributes="Bold" FontSize="16"/>
+                                    <Label Text="{Binding Teacher}" FontSize="14" TextColor="#666"/>
+                                </StackLayout>
+                                
+                                <Button Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
+                                        Text="Remove" 
+                                        Clicked="OnRemoveFromCartClicked"
+                                        BackgroundColor="#F44336" 
+                                        TextColor="White"
+                                        CornerRadius="15"
+                                        Padding="10,5"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            <Label x:Name="emptyCartLabel" Text="Your cart is empty" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center"
+                   FontSize="16"
+                   TextColor="#999"
+                   IsVisible="False"/>
+        </StackLayout>
+
+        <!-- Email Entry -->
+        <StackLayout Grid.Row="1" Spacing="10" Padding="0,10">
+            <Label Text="Enter your email to complete booking:" FontSize="16"/>
+            <Entry x:Name="emailEntry" Placeholder="your.email@example.com" Keyboard="Email" TextChanged="OnEmailTextChanged"/>
+        </StackLayout>
+
+        <!-- Action Buttons -->
+        <StackLayout Grid.Row="2" Spacing="10">
+            <Button Text="Submit Booking" 
+                    Clicked="OnSubmitBooking"
+                    BackgroundColor="#4CAF50" 
+                    TextColor="White"
+                    IsEnabled="False"
+                    x:Name="submitButton"/>
+            
+            <Button Text="Clear Cart" 
+                    Clicked="OnClearCartClicked"
+                    BackgroundColor="#FF9800" 
+                    TextColor="White"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

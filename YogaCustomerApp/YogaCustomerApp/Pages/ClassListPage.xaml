@@ -1,0 +1,114 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:YogaCustomerApp.Pages"
+             xmlns:converters="clr-namespace:YogaCustomerApp.Converters"
+             x:Class="YogaCustomerApp.Pages.ClassListPage"
+             Title="Available Classes">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="15">
+
+            <!-- Search Section -->
+            <Label Text="Search Classes" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <StackLayout Grid.Column="0">
+                    <Label Text="Day of Week:" FontSize="14" />
+                    <Picker x:Name="pickerDay" Title="Select Day" SelectedIndexChanged="OnDaySelected">
+                        <Picker.Items>
+                            <x:String>All Days</x:String>
+                            <x:String>Monday</x:String>
+                            <x:String>Tuesday</x:String>
+                            <x:String>Wednesday</x:String>
+                            <x:String>Thursday</x:String>
+                            <x:String>Friday</x:String>
+                            <x:String>Saturday</x:String>
+                            <x:String>Sunday</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1">
+                    <Label Text="Time:" FontSize="14" />
+                    <Picker x:Name="pickerTime" Title="Select Time" SelectedIndexChanged="OnTimeSelected">
+                        <Picker.Items>
+                            <x:String></x:String>
+                            <x:String>07:00</x:String>
+                            <x:String>08:00</x:String>
+                            <x:String>09:00</x:String>
+                            <x:String>10:00</x:String>
+                            <x:String>11:00</x:String>
+                            <x:String>12:00</x:String>
+                            <x:String>17:00</x:String>
+                            <x:String>18:00</x:String>
+                            <x:String>19:00</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>
+            </Grid>
+
+            <Button Text="Search" Clicked="OnSearchClicked" BackgroundColor="#4CAF50" TextColor="White" />
+            <Button Text="Clear Search" Clicked="OnClearSearchClicked" BackgroundColor="#FF9800" TextColor="White" />
+
+            <!-- CollectionView -->
+            <CollectionView x:Name="classListView"
+                            SelectionMode="Single"
+                            SelectionChanged="OnClassSelected">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Gray"
+                               CornerRadius="8"
+                               Padding="12"
+                               Margin="5"
+                               HasShadow="True">
+
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="{Binding DateDisplay, StringFormat='📅 {0}'}"
+                                       FontAttributes="Bold"
+                                       FontSize="16"
+                                       TextColor="#2196F3" />
+
+                                <Label Text="{Binding TimeDisplay, StringFormat='🕐 {0}'}"
+                                       FontSize="14"
+                                       TextColor="#666"
+                                       IsVisible="{Binding TimeDisplay, Converter={x:Static converters:StringToBoolConverter.Instance}}" />
+
+                                <Label Text="{Binding Teacher, StringFormat='👤 {0}'}"
+                                       FontSize="14"
+                                       TextColor="#666"
+                                       LineBreakMode="WordWrap" />
+
+                                <Label Text="{Binding CourseId, StringFormat='📚 Course ID: {0}'}"
+                                       FontSize="12"
+                                       TextColor="#888" />
+
+                                <Label Text="{Binding Comment, StringFormat='💬 {0}'}"
+                                       FontSize="12"
+                                       TextColor="#999"
+                                       LineBreakMode="WordWrap"
+                                       IsVisible="{Binding Comment, Converter={x:Static converters:StringToBoolConverter.Instance}}" />
+
+                                <Button Text="➕ Add"
+                                        Clicked="OnAddToCartClicked"
+                                        BackgroundColor="#4CAF50"
+                                        TextColor="White"
+                                        CornerRadius="15"
+                                        Padding="10,5"
+                                        FontSize="14"
+                                        HorizontalOptions="End" />
+                            </VerticalStackLayout>
+
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Status -->
+            <Label x:Name="statusLabel"
+                   Text="Loading..."
+                   HorizontalOptions="Center"
+                   FontSize="14"
+                   Padding="10"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
