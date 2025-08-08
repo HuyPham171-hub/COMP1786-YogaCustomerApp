@@ -14,7 +14,7 @@ namespace YogaCustomerApp.Services
         private const string BaseUrl = "https://firestore.googleapis.com/v1/projects/yogaappfirebase-90a8c/databases/(default)/documents";
         private const string InstancesCollection = "instances";
         private const string BookingsCollection = "bookings";
-        private const string ApiKey = "AIzaSyAphyXhohjMhgB0Kgfoz9ktPUpWFUbOq5E";
+        private const string ApiKey = "YOUR_API_KEY";
 
         public async Task<List<ClassInstance>> GetAllClassInstancesAsync()
         {
